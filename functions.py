@@ -9,19 +9,24 @@ def fileDate():
 def process(file):
     import pandas as pd
     import pymysql
+    import sys
+    
+    try:
+        df = pd.read_excel(file, sheet_name='Hoja1')
+    except FileNotFoundError:
+        print(f"File inform.pdf not found.")
+        sys.exit(1)
+    else:
+        connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
 
-    connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
+        cur = connection.cursor() # cursor db
 
-    cur = connection.cursor() # cursor db
-
-    df = pd.read_excel(file, sheet_name='Hoja1')
-
-    # load data
-    for row in df.itertuples():
-        # Call SP updt
-        cur.execute("CALL UpdateData("+str(row.Identificación)+",'"+row.Nombre+"',"+str(row.Cantidad)+")")
-        connection.commit() # Keep changes to BD
-    connection.close()
+        # load data
+        for row in df.itertuples():
+            # Call SP updt
+            cur.execute("CALL UpdateData("+str(row.Identificación)+",'"+row.Nombre+"',"+str(row.Cantidad)+")")
+            connection.commit() # Keep changes to BD
+        connection.close()
 
 def inform():
     # %%
