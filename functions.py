@@ -14,7 +14,7 @@ def process(file):
     try:
         df = pd.read_excel(file, sheet_name='Hoja1')
     except FileNotFoundError:
-        print(f"File inform.pdf not found.")
+        print(f"File or directory {file} not found.")
         sys.exit(1)
     else:
         connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
