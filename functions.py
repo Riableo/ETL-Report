@@ -33,9 +33,11 @@ def inform():
     import pymysql
     import pandas as pd
     import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_pdf import PdfPages
 
     connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
     list_products = {}
+    figs = []
 
     # %%
     cur = connection.cursor()
@@ -55,10 +57,29 @@ def inform():
     diagram = df_inform.plot.bar()
     plt.suptitle('Quantity products',fontsize=20)
 
+    # %% [markdown]
+    # # Pie Diagram
+
     # %%
+    explode = (0, 0, 0, 0, 0, 0.1, 0, 0)
+
+    pie = df_inform.plot.pie(subplots='true', explode=explode, figsize=(10, 10), shadow=True, autopct='%1.1f%%', startangle=90)
+    plt.legend(loc="lower left")
+    plt.suptitle('Quantity products',fontsize=20)
+
+    # %% [markdown]
+    # # Save into pdf
     fig = diagram.get_figure()
+    fig2 = pie[0].get_figure()
+
+    figs.append(fig)
+    figs.append(fig2)
+
     fig.set_size_inches(10, 10)
-    diagram.get_figure().savefig('../Informes/Inform.pdf')
+
+    with PdfPages('Inform20240507.pdf') as pdf:
+        for x in figs:
+            pdf.savefig(x)
 
 def Mail():
     import sys
