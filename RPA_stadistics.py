@@ -1,6 +1,6 @@
 from functions import Mail, fileDate, inform, move, process
 
-d = fileDate() # Current date
+d = fileDate(False) # Current date
 
 # archivo = 'C:/temp/Datos/Información20240506.xlsx' # Fecha actual
 

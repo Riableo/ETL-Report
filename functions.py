@@ -1,10 +1,17 @@
-def fileDate():
+def fileDate(t = True):
     from datetime import datetime
 
-    # Get date
-    fecha_actual = datetime.now().date()
+    if t:
+        # Get datetime
+        fecha_actual = datetime.now()
 
-    return fecha_actual.strftime("%Y%m%d")
+        return fecha_actual
+    else:
+        # Get date
+        fecha_actual = datetime.now().date()
+
+        return fecha_actual.strftime("%Y%m%d")
+
 
 def process(file):
     import pandas as pd
@@ -77,7 +84,10 @@ def inform():
 
     fig.set_size_inches(10, 10)
 
-    with PdfPages('Inform20240507.pdf') as pdf:
+    d = fileDate()
+    extFile = 'Inform'+d+'.pdf'
+
+    with PdfPages(extFile) as pdf:
         for x in figs:
             pdf.savefig(x)
 
