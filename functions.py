@@ -134,6 +134,16 @@ def inform():
     
     manageLog('Diagram', extFile) # Create diagram in log
 
+def currentFile():
+    import sys
+    import os
+    # determine if application is a script file or frozen exe
+    if getattr(sys, 'frozen', False):
+        currentPath = os.path.dirname(sys.executable)
+    elif __file__:
+        currentPath = os.path.dirname(__file__)
+    return currentPath
+
 def Mail():
     import sys
     import os
@@ -145,7 +155,7 @@ def Mail():
 
     try:
         f = open(
-            os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf"), "rb"
+            os.path.join(currentFile(), "../Informes/inform"+d+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
@@ -167,8 +177,8 @@ def Mail():
         if email:        
             text = 'Mail have been sended.'
             manageLog('Process', text) # send mail in log
-            source = os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf")
-            destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform"+d+".pdf")
+            source = os.path.join(currentFile(), "../Informes/inform"+d+".pdf")
+            destination = os.path.join(currentFile(), "../Informes/Procesados/inform"+d+".pdf")
             
             res = move(source, destination)
             

@@ -1,4 +1,0 @@
-File created at 08-05-2024 14:48:12
--------------------
-[08-05-2024 14:48:12] Process beginning
-[08-05-2024 14:48:20] File or directory C:/temp/Datos/Información20240508.xlsx not found.
