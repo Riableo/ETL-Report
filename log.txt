@@ -1,0 +1,13 @@
+File created at 08-05-2024 13:23:14
+-------------------
+[08-05-2024 13:23:14] Process beginning
+[08-05-2024 13:23:15] File or directory C:/temp/Datos/Información20240508.xlsx not found.
+-------------------
+[08-05-2024 13:23:41] Process beginning
+[08-05-2024 13:23:43] File or directory C:/temp/Datos/Información20240508.xlsx found.
+[08-05-2024 13:23:46] Insert | Update table.
+[08-05-2024 13:23:49] Query succesful
+[08-05-2024 13:23:50] Diagram created ../Informes/Inform20240508132341.pdf
+[08-05-2024 13:23:51] Mail have been sended.
+[08-05-2024 13:23:51] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508132341.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508132341.pdf
+[08-05-2024 13:23:51] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx

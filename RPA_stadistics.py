@@ -1,5 +1,3 @@
-
-
 from functions import Mail, fileDate, inform, move, process
 from log import manageLog
 
@@ -8,6 +6,9 @@ d = fileDate() # Current date
 # archivo = 'C:/temp/Datos/Información20240506.xlsx' # Fecha actual
 
 archivo = 'C:/temp/Datos/Información'+d+'.xlsx' # Fecha actual
+
+# init Log
+manageLog(text='Start Process...')
 
 # File processing
 process(archivo)

@@ -1,17 +1,5 @@
-import datetime
-import os
-import resend
-from log import manageLog
-import pymysql
-import sys
-import pandas as pd
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
-import shutil
-from shutil import copy2
-
-
-def fileDate(t):
+def fileDate(t = ''):
+    from datetime import datetime
 
     # Files date
     if t == 'date':
@@ -33,6 +21,11 @@ def fileDate(t):
 d = fileDate('date')
 
 def process(file):
+    import pandas as pd
+    import pymysql
+    import sys
+    from log import manageLog
+
     
     try:
         df = pd.read_excel(file, sheet_name='Hoja1')
@@ -68,6 +61,13 @@ def process(file):
 
 def inform():
     # %%
+    import pymysql
+    import sys
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_pdf import PdfPages
+    from log import manageLog
+
 
     connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
     list_products = {}
@@ -135,6 +135,11 @@ def inform():
     manageLog('Diagram', extFile) # Create diagram in log
 
 def Mail():
+    import sys
+    import os
+    import resend
+    from log import manageLog
+
 
     resend.api_key = os.environ["RESEND_API_KEY"]
 
@@ -175,36 +180,7 @@ def Mail():
             return res
 
 def move(source, destination):
+    import shutil
+    from shutil import copy2
 
     return bool(shutil.move(source, destination, copy_function = copy2))
-
-# if not exist create, but if exist add to note
-def manageLog(text = 'Start Process...', mssg = ''):
-    try:
-        f = open('log.txt', 'r')
-    except FileNotFoundError:  
-        date = fileDate('log')
-        # create if not exist
-        f = open('log.txt', 'w')
-        f.write('File created at '+date)
-        f.write('\n' + '-------------------')
-        f.write('\n' + '['+date+'] Process beginning')
-        f.close
-    else:
-        date = fileDate('log')
-        # add to note
-        match text:
-            
-            case 'Start Process...':
-                f = open('log.txt', 'a')
-                f.write('\n' + '-------------------')
-                f.write('\n' + '['+date+'] Process beginning')
-                f.close()
-            case 'Process':
-                f = open('log.txt', 'a')
-                f.write('\n' + '['+date+'] ' + mssg)
-                f.close()
-            case 'Diagram':
-                f = open('log.txt', 'a')
-                f.write('\n' + '['+date+'] Diagram created ' + mssg)
-                f.close()
