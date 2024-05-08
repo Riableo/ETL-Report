@@ -1,18 +1,20 @@
-def fileDate(t = True):
+def fileDate(t):
     from datetime import datetime
 
-    if t:
+    if t == 'date':
         # Get datetime
         fecha_actual = datetime.now()
 
         return fecha_actual.strftime("%Y%m%d%H%M%S")
+    elif t == 'log':
+        return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     else:
         # Get date
         fecha_actual = datetime.now().date()
 
         return fecha_actual.strftime("%Y%m%d")
 
-d = fileDate()
+d = fileDate('date')
 
 def process(file):
     import pandas as pd
@@ -23,6 +25,7 @@ def process(file):
         df = pd.read_excel(file, sheet_name='Hoja1')
     except FileNotFoundError:
         print(f"File or directory {file} not found.")
+        # file not found in log
         sys.exit(1)
     else:
         connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
@@ -34,6 +37,7 @@ def process(file):
             # Call SP updt
             cur.execute("CALL UpdateData("+str(row.Identificación)+",'"+row.Nombre+"',"+str(row.Cantidad)+")")
             connection.commit() # Keep changes to BD
+        # Insert | Update in log
         connection.close()
 
 def inform():
@@ -57,6 +61,7 @@ def inform():
     df_inform = pd.DataFrame.from_dict(list_products, orient= 'index')
     connection.close()
     print(list_products)
+    # if list_products <> '' ? 'Query succesful' : 'No Data'
 
     # %% [markdown]
     # # Bar Diagram
@@ -71,7 +76,7 @@ def inform():
     # %%
     explode = (0, 0, 0, 0, 0, 0.1, 0, 0)
 
-    pie = df_inform.plot.pie(subplots='true', explode=explode, figsize=(10, 10), shadow=True, autopct='%1.1f%%', startangle=90)
+    pie = df_inform.plot.pie(subplots=True, explode=explode, figsize=(10, 10), shadow=True, autopct='%1.1f%%', startangle=90)
     plt.legend(loc="lower left")
     plt.suptitle('Quantity products',fontsize=20)
 
@@ -90,6 +95,8 @@ def inform():
     with PdfPages(extFile) as pdf:
         for x in figs:
             pdf.savefig(x)
+    
+    # Create diagram in log
 
 def Mail():
     import sys
@@ -104,6 +111,7 @@ def Mail():
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
+        # File not found in log
         sys.exit(1)
     else:
         params = {
@@ -118,9 +126,11 @@ def Mail():
         email = resend.Emails.send(params)
 
         if email:        
+            # send mail in log
             source = os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf")
             destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform"+d+".pdf")
             res = move(source, destination)
+            # Move file in log 
             return res
 
 def move(source, destination):

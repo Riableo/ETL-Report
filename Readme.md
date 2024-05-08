@@ -7,3 +7,7 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 - [**Plot material:**](https://plotly.com/python/legend/) An interesting tool for drawing charts with interactivity. 
 - **Matplotlib:**
 - **Resend:**
+
+## Resources
+
+- [Log Control](https://programminghistorian.org/es/lecciones/trabajar-con-archivos-de-texto)
