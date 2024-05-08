@@ -14,7 +14,7 @@ def manageLog(text = 'Start Process...', mssg = ''):
         f.close
     else:
         date = fileDate('log')
-        # add to note
+        # Add to note
         match text:
             
             case 'Start Process...':

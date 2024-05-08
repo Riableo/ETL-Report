@@ -45,7 +45,7 @@ def process(file):
 
         connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
 
-        cur = connection.cursor() # cursor db
+        cur = connection.cursor() # Cursor DB
 
         # load data
         for row in df.itertuples():

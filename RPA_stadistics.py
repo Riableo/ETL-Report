@@ -7,7 +7,7 @@ d = fileDate() # Current date
 
 archivo = 'C:/temp/Datos/Información'+d+'.xlsx' # Fecha actual
 
-# init Log
+# Init Log
 manageLog(text='Start Process...')
 
 # File processing
