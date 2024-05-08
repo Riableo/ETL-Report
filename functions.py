@@ -5,13 +5,14 @@ def fileDate(t = True):
         # Get datetime
         fecha_actual = datetime.now()
 
-        return fecha_actual
+        return fecha_actual.strftime("%Y%m%d%H%M%S")
     else:
         # Get date
         fecha_actual = datetime.now().date()
 
         return fecha_actual.strftime("%Y%m%d")
 
+d = fileDate()
 
 def process(file):
     import pandas as pd
@@ -84,8 +85,7 @@ def inform():
 
     fig.set_size_inches(10, 10)
 
-    d = fileDate()
-    extFile = 'Inform'+d+'.pdf'
+    extFile = '../Informes/Inform'+d+'.pdf'
 
     with PdfPages(extFile) as pdf:
         for x in figs:
@@ -100,7 +100,7 @@ def Mail():
 
     try:
         f = open(
-            os.path.join(os.path.dirname(__file__), "../Informes/inform.pdf"), "rb"
+            os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
@@ -118,8 +118,8 @@ def Mail():
         email = resend.Emails.send(params)
 
         if email:        
-            source = os.path.join(os.path.dirname(__file__), "../Informes/inform.pdf")
-            destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform.pdf")
+            source = os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf")
+            destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform"+d+".pdf")
             res = move(source, destination)
             return res
 
