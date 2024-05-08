@@ -1,13 +1,29 @@
-def fileDate(t):
-    from datetime import datetime
+import datetime
+import os
+import resend
+from log import manageLog
+import pymysql
+import sys
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
+import shutil
+from shutil import copy2
 
+
+def fileDate(t):
+
+    # Files date
     if t == 'date':
         # Get datetime
         fecha_actual = datetime.now()
 
         return fecha_actual.strftime("%Y%m%d%H%M%S")
+    # Date log
     elif t == 'log':
         return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    
+    # Date to find file
     else:
         # Get date
         fecha_actual = datetime.now().date()
@@ -17,17 +33,23 @@ def fileDate(t):
 d = fileDate('date')
 
 def process(file):
-    import pandas as pd
-    import pymysql
-    import sys
     
     try:
         df = pd.read_excel(file, sheet_name='Hoja1')
     except FileNotFoundError:
         print(f"File or directory {file} not found.")
-        # file not found in log
+
+        # Create log when file wasn't found
+        text = f"File or directory {file} not found."
+        manageLog('Process', text) # file not found in log
+
         sys.exit(1)
     else:
+        
+        # Create log when file was found
+        text = f"File or directory {file} found."
+        manageLog('Process', text) # file found in log
+
         connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
 
         cur = connection.cursor() # cursor db
@@ -37,15 +59,15 @@ def process(file):
             # Call SP updt
             cur.execute("CALL UpdateData("+str(row.Identificación)+",'"+row.Nombre+"',"+str(row.Cantidad)+")")
             connection.commit() # Keep changes to BD
-        # Insert | Update in log
+
+        # Create log when insert was succesful
+        text = 'Insert | Update table.'
+        manageLog('Process', text) # Insert | Update in log
+
         connection.close()
 
 def inform():
     # %%
-    import pymysql
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from matplotlib.backends.backend_pdf import PdfPages
 
     connection = pymysql.connect(host='localhost', user='root', passwd='', db='information')
     list_products = {}
@@ -61,14 +83,28 @@ def inform():
     df_inform = pd.DataFrame.from_dict(list_products, orient= 'index')
     connection.close()
     print(list_products)
-    # if list_products <> '' ? 'Query succesful' : 'No Data'
+
+    # Evaluate dict is not empty
+    text = 'Query succesful' if bool(list_products) else 'No Data'
+    manageLog('Process', text)
 
     # %% [markdown]
     # # Bar Diagram
 
     # %%
-    diagram = df_inform.plot.bar()
-    plt.suptitle('Quantity products',fontsize=20)
+    def notEmpty():
+        if bool(list_products):
+            global diagram
+            diagram = df_inform.plot.bar()
+            plt.suptitle('Quantity products',fontsize=20)
+        else:
+            raise Exception('Dict is empty: '+str(list_products))
+    try:
+        notEmpty()
+    except Exception as e:
+        print(e)
+        manageLog('Process', e) # Log with error no data in BD
+        sys.exit(1)
 
     # %% [markdown]
     # # Pie Diagram
@@ -96,12 +132,9 @@ def inform():
         for x in figs:
             pdf.savefig(x)
     
-    # Create diagram in log
+    manageLog('Diagram', extFile) # Create diagram in log
 
 def Mail():
-    import sys
-    import os
-    import resend
 
     resend.api_key = os.environ["RESEND_API_KEY"]
 
@@ -111,7 +144,8 @@ def Mail():
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
-        # File not found in log
+        text = f"File inform.pdf not found."
+        manageLog('Not found', text) # File not found in log
         sys.exit(1)
     else:
         params = {
@@ -126,15 +160,51 @@ def Mail():
         email = resend.Emails.send(params)
 
         if email:        
-            # send mail in log
+            text = 'Mail have been sended.'
+            manageLog('Process', text) # send mail in log
             source = os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf")
             destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform"+d+".pdf")
+            
             res = move(source, destination)
-            # Move file in log 
+            
+            # Change file path
+            moved = 'File have been moved from '+source+ ' -> ' + destination
+            error = "File haven't been moved to "+destination
+            manageLog('Process', moved) if res else manageLog('Process', error) # Move file in log 
+            
             return res
 
 def move(source, destination):
-    import shutil
-    from shutil import copy2
 
     return bool(shutil.move(source, destination, copy_function = copy2))
+
+# if not exist create, but if exist add to note
+def manageLog(text = 'Start Process...', mssg = ''):
+    try:
+        f = open('log.txt', 'r')
+    except FileNotFoundError:  
+        date = fileDate('log')
+        # create if not exist
+        f = open('log.txt', 'w')
+        f.write('File created at '+date)
+        f.write('\n' + '-------------------')
+        f.write('\n' + '['+date+'] Process beginning')
+        f.close
+    else:
+        date = fileDate('log')
+        # add to note
+        match text:
+            
+            case 'Start Process...':
+                f = open('log.txt', 'a')
+                f.write('\n' + '-------------------')
+                f.write('\n' + '['+date+'] Process beginning')
+                f.close()
+            case 'Process':
+                f = open('log.txt', 'a')
+                f.write('\n' + '['+date+'] ' + mssg)
+                f.close()
+            case 'Diagram':
+                f = open('log.txt', 'a')
+                f.write('\n' + '['+date+'] Diagram created ' + mssg)
+                f.close()

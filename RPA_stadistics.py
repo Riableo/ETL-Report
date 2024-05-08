@@ -1,4 +1,7 @@
+
+
 from functions import Mail, fileDate, inform, move, process
+from log import manageLog
 
 d = fileDate() # Current date
 
@@ -17,8 +20,17 @@ path = Mail()
 
 # Move file if all success
 if path:
-    res = move('C:/temp/Datos/Información'+d+'.xlsx','C:/temp/Datos/Procesados/Información'+d+'.xlsx')
+    source = 'C:/temp/Datos/Información'+d+'.xlsx'
+    destination = 'C:/temp/Datos/Procesados/Información'+d+'.xlsx' 
+    res = move(source,destination)
+    
     
     # Move file in log
     if res:
+        moved = 'File have been moved from '+source+ ' -> ' + destination
         print('move success')
+        manageLog('Process',moved)
+    else:
+        error = "File haven't been moved to "+destination
+        print('Error on move file')
+        manageLog('Process',error)
