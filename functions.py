@@ -73,7 +73,15 @@ def validateDIR (path):
     if isExisting:
         text = 'DIR ' +valPath+ ' exist'
         manageLog('Process', text)
+
+        # Create subdir
+        if path == '../Informes':
+            validateDIR('../Informes/Procesados')
+
     else:
+        text = 'DIR ' +valPath+ ' not exist'
+        manageLog('Process', text)
+
         os.mkdir(valPath)
         text = 'DIR ' +valPath+ ' created'
         manageLog('Process', text)

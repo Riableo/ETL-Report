@@ -45,3 +45,46 @@ File created at 08-05-2024 19:08:33
 [08-05-2024 19:17:47] Mail have been sended.
 [08-05-2024 19:17:47] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508191737.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508191737.pdf
 [08-05-2024 19:17:47] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx
+-------------------
+[08-05-2024 19:26:05] Process beginning
+[08-05-2024 19:26:07] File or directory C:/temp/Datos/Información20240508.xlsx found.
+[08-05-2024 19:26:10] Insert | Update table.
+[08-05-2024 19:26:13] Query succesful
+[08-05-2024 19:26:13] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes exist
+[08-05-2024 19:26:13] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados created
+[08-05-2024 19:26:13] Diagram created ../Informes/Inform20240508192605.pdf
+[08-05-2024 19:26:15] Mail have been sended.
+[08-05-2024 19:26:15] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508192605.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508192605.pdf
+[08-05-2024 19:26:15] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx
+-------------------
+[08-05-2024 19:29:00] Process beginning
+[08-05-2024 19:29:01] File or directory C:/temp/Datos/Información20240508.xlsx not found.
+-------------------
+[08-05-2024 19:29:15] Process beginning
+[08-05-2024 19:29:17] File or directory C:/temp/Datos/Información20240508.xlsx found.
+[08-05-2024 19:29:20] Insert | Update table.
+[08-05-2024 19:29:23] Query succesful
+[08-05-2024 19:29:24] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes exist
+[08-05-2024 19:29:24] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados not exist
+[08-05-2024 19:29:24] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados created
+[08-05-2024 19:29:24] Diagram created ../Informes/Inform20240508192915.pdf
+[08-05-2024 19:29:26] Mail have been sended.
+[08-05-2024 19:29:26] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508192915.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508192915.pdf
+[08-05-2024 19:29:26] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx
+-------------------
+[08-05-2024 19:30:25] Process beginning
+[08-05-2024 19:30:25] File or directory C:/temp/Datos/Información20240508.xlsx not found.
+-------------------
+[08-05-2024 19:30:31] Process beginning
+[08-05-2024 19:30:32] File or directory C:/temp/Datos/Información20240508.xlsx not found.
+-------------------
+[08-05-2024 19:30:42] Process beginning
+[08-05-2024 19:30:43] File or directory C:/temp/Datos/Información20240508.xlsx found.
+[08-05-2024 19:30:46] Insert | Update table.
+[08-05-2024 19:30:49] Query succesful
+[08-05-2024 19:30:50] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes exist
+[08-05-2024 19:30:50] DIR c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados exist
+[08-05-2024 19:30:50] Diagram created ../Informes/Inform20240508193042.pdf
+[08-05-2024 19:30:52] Mail have been sended.
+[08-05-2024 19:30:52] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508193042.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508193042.pdf
+[08-05-2024 19:30:52] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx

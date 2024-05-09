@@ -14,3 +14,4 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 - [Exceptions](https://docs.python.org/3/tutorial/errors.html) this help me with create and understanding the functionality of exceptions.
 - [Validate DIR exist](https://www.simplilearn.com/tutorials/python-tutorial/python-check-if-file-exists) another [DIR exist](https://www.python-engineer.com/posts/check-if-file-exists/)
 - [Concatenate path](https://www.geeksforgeeks.org/python-os-path-join-method/)
+- [Create DIR if not exist](https://www.geeksforgeeks.org/create-a-directory-in-python/) with ```os.mkdir ```
