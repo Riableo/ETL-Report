@@ -1,12 +1,9 @@
-File created at 08-05-2024 21:15:43
+File created at 08-05-2024 21:43:16
 -------------------
-[08-05-2024 21:15:43] Process beginning
-[08-05-2024 21:15:45] File or directory C:/temp/Datos/Información20240508.xlsx found.
-[08-05-2024 21:15:48] Insert | Update table.
-[08-05-2024 21:15:55] Query succesful
-[08-05-2024 21:15:56] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\_internal\../Informes not exist
-[08-05-2024 21:15:56] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\_internal\../Informes created
-[08-05-2024 21:15:56] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\_internal\../Informes/Procesados not exist
-[08-05-2024 21:15:56] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\_internal\../Informes/Procesados created
-[08-05-2024 21:15:56] Execute by .exe
-[08-05-2024 21:15:56] Directory search: ../Informes/Inform20240508211543.pdf
+[08-05-2024 21:43:16] Process beginning
+[08-05-2024 21:43:18] File or directory C:/temp/Datos/Información20240508.xlsx found.
+[08-05-2024 21:43:21] Insert | Update table.
+[08-05-2024 21:43:26] Query succesful
+[08-05-2024 21:43:26] Execute by .exe
+[08-05-2024 21:43:26] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes not exist
+[08-05-2024 21:43:26] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes created

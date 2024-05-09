@@ -60,12 +60,12 @@ def process(file):
         connection.close()
 
 # Checking whether the specified path exists
-def validateDIR (path):
+def validateDIR (currentPath, path):
     import os
     from log import manageLog
 
     # Specifying path
-    valPath = os.path.join(os.path.dirname(__file__), path)
+    valPath = os.path.join(currentPath, path)
     
     isExisting = os.path.isdir(valPath)
     
@@ -76,7 +76,7 @@ def validateDIR (path):
 
         # Create subdir
         if path == '../Informes':
-            validateDIR('../Informes/Procesados')
+            validateDIR(currentPath,'../Informes/Procesados')
 
     else:
         text = 'DIR ' +valPath+ ' not exist'
@@ -88,7 +88,7 @@ def validateDIR (path):
         
         # Create subdir
         if path == '../Informes':
-            validateDIR('../Informes/Procesados')
+            validateDIR(currentPath,'../Informes/Procesados')
 
 def currentFile():
     import sys
@@ -178,9 +178,9 @@ def inform():
 
     fig.set_size_inches(10, 10)
 
-    validateDIR('../Informes') # Validate DIR exist
-
     c, extFile = currentFile()
+
+    validateDIR(c,'../Informes') # Validate DIR exist
 
     print(extFile)
     extFile = os.path.join(c, extFile)
