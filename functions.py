@@ -73,7 +73,9 @@ def validateDIR (currentPath, path):
     
     # If not exist DIR create
     if isExisting:
-        text = 'DIR ' +valPath+ ' exist'
+
+        # Mssg log
+        text = 'DIR ' +path+ ' exist'
         manageLog('Process', text)
 
         # Create subdir
@@ -81,11 +83,16 @@ def validateDIR (currentPath, path):
             validateDIR(currentPath,'../Informes/Procesados')
 
     else:
-        text = 'DIR ' +valPath+ ' not exist'
+
+        # Mssg log don't exist
+        text = 'DIR ' +path+ ' not exist'
         manageLog('Process', text)
 
+        # Create DIR
         os.mkdir(valPath)
-        text = 'DIR ' +valPath+ ' created'
+
+        # Mssg log created
+        text = 'DIR ' +path+ ' created'
         manageLog('Process', text)
         
         # Create subdir
@@ -167,16 +174,16 @@ def inform():
     validateDIR(currentPath.c,'../Informes') # Validate DIR exist
 
     extFile = '../Informes/Inform'+d+'.pdf'
-    extFile = os.path.join(currentPath.c, extFile)
+    pathInformFile = os.path.join(currentPath.c, extFile)
     # manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
 
-    with PdfPages(extFile) as pdf:
+    with PdfPages(pathInformFile) as pdf:
         for x in figs:
             try:
                 pdf.savefig(x)
             except FileNotFoundError as e:
                 print(e)
-                manageLog('Process','Error en save pdf file: '+extFile)
+                manageLog('Process','Error en save pdf file: '+pathInformFile)
                 manageLog('Process', e)
                 sys.exit(1)
     
@@ -217,16 +224,20 @@ def Mail():
         if email:        
             text = 'Mail have been sended.'
             manageLog('Process', text) # send mail in log
-            #c, extFile =  currentFile()
-            # c =currentFile()
+            
+            # To construct move files
             source = os.path.join(currentPath.c, "../Informes/inform"+d+".pdf")
             destination = os.path.join(currentPath.c, "../Informes/Procesados/inform"+d+".pdf")
             
             res = move(source, destination)
             
+            # Protect path user
+            srcPath = "../Informes/inform"+d+".pdf"
+            destPath = "../Informes/Procesados/inform"+d+".pdf"
+
             # Change file path
-            moved = 'File have been moved from '+source+ ' -> ' + destination
-            error = "File haven't been moved to "+destination
+            moved = 'File have been moved from '+srcPath+ ' -> ' + destPath
+            error = "File haven't been moved to "+destPath
             manageLog('Process', moved) if res else manageLog('Process', error) # Move file in log 
             
             return res

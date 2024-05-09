@@ -46,3 +46,17 @@ File created at 09-05-2024 15:31:58
 [09-05-2024 17:06:35] Mail have been sended.
 [09-05-2024 17:06:35] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240509170625.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240509170625.pdf
 [09-05-2024 17:06:35] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx
+-------------------
+[09-05-2024 18:23:58] Process beginning
+[09-05-2024 18:23:59] File or directory C:/temp/Datos/Información20240509.xlsx not found.
+-------------------
+[09-05-2024 18:24:11] Process beginning
+[09-05-2024 18:24:12] File or directory C:/temp/Datos/Información20240509.xlsx found.
+[09-05-2024 18:24:15] Insert | Update table.
+[09-05-2024 18:24:18] Query succesful
+[09-05-2024 18:24:18] DIR ../Informes exist
+[09-05-2024 18:24:18] DIR ../Informes/Procesados exist
+[09-05-2024 18:24:19] Diagram created ../Informes/Inform20240509182411.pdf
+[09-05-2024 18:24:20] Mail have been sended.
+[09-05-2024 18:24:20] File have been moved from ../Informes/inform20240509182411.pdf -> ../Informes/Procesados/inform20240509182411.pdf
+[09-05-2024 18:24:20] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx
