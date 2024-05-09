@@ -15,3 +15,4 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 - [Validate DIR exist](https://www.simplilearn.com/tutorials/python-tutorial/python-check-if-file-exists) another [DIR exist](https://www.python-engineer.com/posts/check-if-file-exists/)
 - [Concatenate path](https://www.geeksforgeeks.org/python-os-path-join-method/)
 - [Create DIR if not exist](https://www.geeksforgeeks.org/create-a-directory-in-python/) with ```os.mkdir ```
+- [Create function with multi returns](https://drbeane.github.io/python/pages/functions/returning_multiple.html#:~:text=It%20is%20possible%20for%20a,return%20statement%2C%20separated%20by%20commas.)
