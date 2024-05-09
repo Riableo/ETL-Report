@@ -113,6 +113,7 @@ def currentFile():
 def inform():
     # %%
     import pymysql
+    import os
     import sys
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -182,6 +183,7 @@ def inform():
     c, extFile = currentFile()
 
     print(extFile)
+    extFile = os.path.join(c, extFile)
     manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
 
     with PdfPages(extFile) as pdf:
@@ -190,6 +192,7 @@ def inform():
                 pdf.savefig(x)
             except FileNotFoundError as e:
                 print(e)
+                manageLog('Process','Error en save pdf file: '+extFile)
                 manageLog('Process', e)
                 sys.exit(1)
     
