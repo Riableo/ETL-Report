@@ -1,14 +1,21 @@
-from functions import fileDate
 
 # if not exist create, but if exist add to note
 def manageLog(text = 'Start Process...', mssg = ''):
+    import os
+    import currentPath
+    from functions import fileDate
+
+    # c,extFile = currentFile()
+
+    txtFile = os.path.join(currentPath.c,'log.txt')
+
     try:
-        f = open('log.txt', 'r')
+        f = open(txtFile, 'r')
     except FileNotFoundError:  
         date = fileDate('log')
         
         # create if not exist
-        f = open('log.txt', 'w')
+        f = open(txtFile, 'w')
         f.write('File created at '+date)
         f.write('\n' + '-------------------')
         f.write('\n' + '['+date+'] Process beginning')
@@ -19,15 +26,15 @@ def manageLog(text = 'Start Process...', mssg = ''):
         match text:
             
             case 'Start Process...':
-                f = open('log.txt', 'a')
+                f = open(txtFile, 'a')
                 f.write('\n' + '-------------------')
                 f.write('\n' + '['+date+'] Process beginning')
                 f.close()
             case 'Process':
-                f = open('log.txt', 'a')
+                f = open(txtFile, 'a')
                 f.write('\n' + '['+date+'] ' + mssg)
                 f.close()
             case 'Diagram':
-                f = open('log.txt', 'a')
+                f = open(txtFile, 'a')
                 f.write('\n' + '['+date+'] Diagram created ' + mssg)
                 f.close()

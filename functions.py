@@ -1,3 +1,6 @@
+import currentPath
+import RPA_stadistics
+
 def fileDate(t = ''):
     from datetime import datetime
 
@@ -18,7 +21,8 @@ def fileDate(t = ''):
 
         return fecha_actual.strftime("%Y%m%d")
 
-d = fileDate('date')
+# d = fileDate('date')
+date = RPA_stadistics.date
 
 def process(file):
     import pandas as pd
@@ -90,26 +94,6 @@ def validateDIR (currentPath, path):
         if path == '../Informes':
             validateDIR(currentPath,'../Informes/Procesados')
 
-def currentFile():
-    import sys
-    import os
-    from log import manageLog
-
-    # determine if application is a script file or frozen exe
-    if getattr(sys, 'frozen', False):
-        currentPath = os.path.dirname(sys.executable)
-        extFile = '../Informes/Inform'+d+'.pdf'
-        # Validate entry
-        print('exe current')
-        manageLog('Process','Execute by .exe')
-    elif __file__:
-        currentPath = os.path.dirname(__file__)
-        extFile = '../Informes/Inform'+d+'.pdf'
-        # Validate entry
-        print('por codigo')
-        manageLog('Process', 'Execute by script file')
-    return currentPath, extFile
-
 def inform():
     # %%
     import pymysql
@@ -178,12 +162,14 @@ def inform():
 
     fig.set_size_inches(10, 10)
 
-    c, extFile = currentFile()
+    # c, extFile = currentFile()
+    
+    # c =currentFile()
 
-    validateDIR(c,'../Informes') # Validate DIR exist
+    validateDIR(currentPath.c,'../Informes') # Validate DIR exist
 
-    print(extFile)
-    extFile = os.path.join(c, extFile)
+    extFile = '../Informes/Inform'+date+'.pdf'
+    extFile = os.path.join(currentPath.c, extFile)
     manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
 
     with PdfPages(extFile) as pdf:
@@ -208,9 +194,10 @@ def Mail():
     resend.api_key = os.environ["RESEND_API_KEY"]
 
     try:
-        c, extFile =  currentFile()
+        #c, extFile =  currentFile()
+        # c =currentFile()
         f = open(
-            os.path.join(c, "../Informes/inform"+d+".pdf"), "rb"
+            os.path.join(currentPath.c, "../Informes/inform"+date+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
@@ -232,9 +219,10 @@ def Mail():
         if email:        
             text = 'Mail have been sended.'
             manageLog('Process', text) # send mail in log
-            c, extFile =  currentFile()
-            source = os.path.join(c, "../Informes/inform"+d+".pdf")
-            destination = os.path.join(c, "../Informes/Procesados/inform"+d+".pdf")
+            #c, extFile =  currentFile()
+            # c =currentFile()
+            source = os.path.join(currentPath.c, "../Informes/inform"+date+".pdf")
+            destination = os.path.join(currentPath.c, "../Informes/Procesados/inform"+date+".pdf")
             
             res = move(source, destination)
             

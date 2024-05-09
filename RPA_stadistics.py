@@ -2,6 +2,7 @@ from functions import Mail, fileDate, inform, move, process
 from log import manageLog
 
 d = fileDate() # Current date
+date = fileDate('date') # FormatDate by functions
 
 # archivo = 'C:/temp/Datos/Información20240506.xlsx' # Fecha actual
 
