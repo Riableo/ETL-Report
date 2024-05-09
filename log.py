@@ -1,4 +1,5 @@
 from functions import fileDate
+import os
 
 # if not exist create, but if exist add to note
 def manageLog(text = 'Start Process...', mssg = ''):
@@ -6,7 +7,9 @@ def manageLog(text = 'Start Process...', mssg = ''):
         f = open('log.txt', 'r')
     except FileNotFoundError:  
         date = fileDate('log')
+        
         # create if not exist
+        os.system('touch log.txt')
         f = open('log.txt', 'w')
         f.write('File created at '+date)
         f.write('\n' + '-------------------')
