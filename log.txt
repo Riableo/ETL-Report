@@ -71,3 +71,25 @@ File created at 09-05-2024 15:31:58
 [09-05-2024 18:32:50] Mail have been sended.
 [09-05-2024 18:32:50] File have been moved from ../Informes/inform20240509183239.pdf -> ../Informes/Procesados/inform20240509183239.pdf
 [09-05-2024 18:32:50] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx
+-------------------
+[09-05-2024 18:43:25] Process beginning
+[09-05-2024 18:43:27] File or directory C:/temp/Datos/Información20240509.xlsx found.
+[09-05-2024 18:43:30] Insert | Update table.
+[09-05-2024 18:43:33] Query succesful
+[09-05-2024 18:43:34] DIR ../Informes exist
+[09-05-2024 18:43:34] DIR ../Informes/Procesados exist
+[09-05-2024 18:43:34] Diagram created ../Informes/Inform20240509184325.pdf
+[09-05-2024 18:43:36] Mail have been sended.
+[09-05-2024 18:43:36] File have been moved from ../Informes/inform20240509184325.pdf -> ../Informes/Procesados/inform20240509184325.pdf
+[09-05-2024 18:43:36] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx
+-------------------
+[09-05-2024 18:54:49] Process beginning
+[09-05-2024 18:54:50] File or directory C:/temp/Datos/Información20240509.xlsx found.
+[09-05-2024 18:54:54] Insert | Update table.
+[09-05-2024 18:54:57] Query succesful
+[09-05-2024 18:54:57] DIR ../Informes exist
+[09-05-2024 18:54:57] DIR ../Informes/Procesados exist
+[09-05-2024 18:54:57] Diagram created ../Informes/Inform20240509185449.pdf
+[09-05-2024 18:54:59] Mail have been sended.
+[09-05-2024 18:54:59] File have been moved from ../Informes/inform20240509185449.pdf -> ../Informes/Procesados/inform20240509185449.pdf
+[09-05-2024 18:54:59] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx

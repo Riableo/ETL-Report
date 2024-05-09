@@ -210,11 +210,26 @@ def Mail():
         manageLog('Process', text) # File not found in log
         sys.exit(1)
     else:
+
+        # Making a mail better
+
+        html = """
+        <div>
+            <p><strong>Successful Delivery of Daily Information!</strong></p>
+            <p>Dear Stakeholder,</p>
+            <p>We are pleased to inform you that the daily information report has been successfully processed and is ready for your review. You will find detailed reports and charts attached to this email.</p>
+            <p>If you have any questions or need further assistance, please feel free to reach out to us.</p>
+            <p>Thank you for your attention.</p>
+            <p>Best regards,</p>
+            <p>The Data Analysis Team</p>
+        </div>
+        """
+        
         params = {
             "from": "Testing <onboarding@resend.dev>",
             "to": ["riableo.dev@gmail.com"],
             "subject": "Daily inform",
-            "html": "<strong>it works!</strong>",
+            "html": html,
             "attachments": [{"filename": "inform.pdf", "content": list(f)}],
             
         }
