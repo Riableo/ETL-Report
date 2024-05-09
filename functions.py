@@ -59,6 +59,29 @@ def process(file):
 
         connection.close()
 
+# Checking whether the specified path exists
+def validateDIR (path):
+    import os
+    from log import manageLog
+
+    # Specifying path
+    valPath = os.path.join(os.path.dirname(__file__), path)
+    
+    isExisting = os.path.isdir(valPath)
+    
+    # If not exist DIR create
+    if isExisting:
+        text = 'DIR ' +valPath+ ' exist'
+        manageLog('Process', text)
+    else:
+        os.mkdir(valPath)
+        text = 'DIR ' +valPath+ ' created'
+        manageLog('Process', text)
+        
+        # Create subdir
+        if path == '../Informes':
+            validateDIR('../Informes/Procesados')
+
 def inform():
     # %%
     import pymysql
@@ -125,6 +148,8 @@ def inform():
     figs.append(fig2)
 
     fig.set_size_inches(10, 10)
+
+    validateDIR('../Informes') # Validate DIR exist
 
     extFile = '../Informes/Inform'+d+'.pdf'
 

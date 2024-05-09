@@ -17,10 +17,10 @@ process(archivo)
 inform()
 
 # Send mail
-path = Mail()
+respMail = Mail()
 
 # Move file if all success
-if path:
+if respMail:
     source = 'C:/temp/Datos/Información'+d+'.xlsx'
     destination = 'C:/temp/Datos/Procesados/Información'+d+'.xlsx' 
     res = move(source,destination)
