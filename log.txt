@@ -140,3 +140,6 @@ File created at 08-05-2024 19:08:33
 [08-05-2024 22:02:12] Execute by script file
 [08-05-2024 22:02:12] File have been moved from c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/inform20240508220203.pdf -> c:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\../Informes/Procesados/inform20240508220203.pdf
 [08-05-2024 22:02:12] File have been moved from C:/temp/Datos/Información20240508.xlsx -> C:/temp/Datos/Procesados/Información20240508.xlsx
+-------------------
+[08-05-2024 23:02:25] Process beginning
+[08-05-2024 23:02:27] File or directory C:/temp/Datos/Información20240508.xlsx not found.
