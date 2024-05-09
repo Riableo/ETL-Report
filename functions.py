@@ -90,6 +90,18 @@ def validateDIR (path):
         if path == '../Informes':
             validateDIR('../Informes/Procesados')
 
+def currentFile():
+    import sys
+    import os
+    # determine if application is a script file or frozen exe
+    if getattr(sys, 'frozen', False):
+        currentPath = os.path.dirname(sys.executable)
+        extFile = '../../Informes/Inform'+d+'.pdf'
+    elif __file__:
+        currentPath = os.path.dirname(__file__)
+        extFile = '../Informes/Inform'+d+'.pdf'
+    return currentPath, extFile
+
 def inform():
     # %%
     import pymysql
@@ -159,23 +171,13 @@ def inform():
 
     validateDIR('../Informes') # Validate DIR exist
 
-    extFile = '../Informes/Inform'+d+'.pdf'
+    c, extFile = currentFile()
 
     with PdfPages(extFile) as pdf:
         for x in figs:
             pdf.savefig(x)
     
     manageLog('Diagram', extFile) # Create diagram in log
-
-def currentFile():
-    import sys
-    import os
-    # determine if application is a script file or frozen exe
-    if getattr(sys, 'frozen', False):
-        currentPath = os.path.dirname(sys.executable)
-    elif __file__:
-        currentPath = os.path.dirname(__file__)
-    return currentPath
 
 def Mail():
     import sys
@@ -187,8 +189,9 @@ def Mail():
     resend.api_key = os.environ["RESEND_API_KEY"]
 
     try:
+        c, extFile =  currentFile()
         f = open(
-            os.path.join(currentFile(), "../Informes/inform"+d+".pdf"), "rb"
+            os.path.join(c, "../Informes/inform"+d+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
@@ -210,8 +213,9 @@ def Mail():
         if email:        
             text = 'Mail have been sended.'
             manageLog('Process', text) # send mail in log
-            source = os.path.join(currentFile(), "../Informes/inform"+d+".pdf")
-            destination = os.path.join(currentFile(), "../Informes/Procesados/inform"+d+".pdf")
+            c, extFile =  currentFile()
+            source = os.path.join(c, "../Informes/inform"+d+".pdf")
+            destination = os.path.join(c, "../Informes/Procesados/inform"+d+".pdf")
             
             res = move(source, destination)
             
