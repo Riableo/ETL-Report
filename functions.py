@@ -93,13 +93,21 @@ def validateDIR (path):
 def currentFile():
     import sys
     import os
+    from log import manageLog
+
     # determine if application is a script file or frozen exe
     if getattr(sys, 'frozen', False):
         currentPath = os.path.dirname(sys.executable)
-        extFile = '../../Informes/Inform'+d+'.pdf'
+        extFile = '../Informes/Inform'+d+'.pdf'
+        # Validate entry
+        print('exe current')
+        manageLog('Process','Execute by .exe')
     elif __file__:
         currentPath = os.path.dirname(__file__)
         extFile = '../Informes/Inform'+d+'.pdf'
+        # Validate entry
+        print('por codigo')
+        manageLog('Process', 'Execute by script file')
     return currentPath, extFile
 
 def inform():
@@ -173,9 +181,17 @@ def inform():
 
     c, extFile = currentFile()
 
+    print(extFile)
+    manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
+
     with PdfPages(extFile) as pdf:
         for x in figs:
-            pdf.savefig(x)
+            try:
+                pdf.savefig(x)
+            except FileNotFoundError as e:
+                print(e)
+                manageLog('Process', e)
+                sys.exit(1)
     
     manageLog('Diagram', extFile) # Create diagram in log
 
@@ -196,7 +212,7 @@ def Mail():
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
         text = f"File inform.pdf not found."
-        manageLog('Not found', text) # File not found in log
+        manageLog('Process', text) # File not found in log
         sys.exit(1)
     else:
         params = {
