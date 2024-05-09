@@ -168,7 +168,7 @@ def inform():
 
     extFile = '../Informes/Inform'+d+'.pdf'
     extFile = os.path.join(currentPath.c, extFile)
-    manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
+    # manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
 
     with PdfPages(extFile) as pdf:
         for x in figs:
