@@ -1,5 +1,4 @@
 from functions import fileDate
-import os
 
 # if not exist create, but if exist add to note
 def manageLog(text = 'Start Process...', mssg = ''):
@@ -13,7 +12,7 @@ def manageLog(text = 'Start Process...', mssg = ''):
         f.write('File created at '+date)
         f.write('\n' + '-------------------')
         f.write('\n' + '['+date+'] Process beginning')
-        f.close
+        f.close()
     else:
         date = fileDate('log')
         # Add to note
