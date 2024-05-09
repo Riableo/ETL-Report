@@ -10,7 +10,7 @@ def manageLog(text = 'Start Process...', mssg = ''):
         
         # create if not exist
         os.system('touch log.txt')
-        f = open('log.txt', 'w')
+        f = open('log.txt', 'w+')
         f.write('File created at '+date)
         f.write('\n' + '-------------------')
         f.write('\n' + '['+date+'] Process beginning')
