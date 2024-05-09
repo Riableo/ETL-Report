@@ -1,0 +1,16 @@
+File created at 09-05-2024 17:30:25
+-------------------
+[09-05-2024 17:30:25] Process beginning
+[09-05-2024 17:30:25] File or directory C:/temp/Datos/Información20240509.xlsx not found.
+-------------------
+[09-05-2024 17:30:53] Process beginning
+[09-05-2024 17:30:54] File or directory C:/temp/Datos/Información20240509.xlsx found.
+[09-05-2024 17:30:57] Insert | Update table.
+[09-05-2024 17:31:01] Query succesful
+[09-05-2024 17:31:01] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes exist
+[09-05-2024 17:31:01] DIR C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes/Procesados exist
+[09-05-2024 17:31:01] Directory search: C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes/Inform20240509173053.pdf
+[09-05-2024 17:31:01] Diagram created C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes/Inform20240509173053.pdf
+[09-05-2024 17:31:03] Mail have been sended.
+[09-05-2024 17:31:03] File have been moved from C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes/inform20240509173053.pdf -> C:\Users\brian\Documents\Docs\Pdoc\Entrega SIG\Code\dist\RPA_stadistics\../Informes/Procesados/inform20240509173053.pdf
+[09-05-2024 17:31:03] File have been moved from C:/temp/Datos/Información20240509.xlsx -> C:/temp/Datos/Procesados/Información20240509.xlsx

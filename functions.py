@@ -1,5 +1,4 @@
 import currentPath
-import RPA_stadistics
 
 def fileDate(t = ''):
     from datetime import datetime
@@ -21,8 +20,7 @@ def fileDate(t = ''):
 
         return fecha_actual.strftime("%Y%m%d")
 
-# d = fileDate('date')
-date = RPA_stadistics.date
+d = fileDate('date')
 
 def process(file):
     import pandas as pd
@@ -168,7 +166,7 @@ def inform():
 
     validateDIR(currentPath.c,'../Informes') # Validate DIR exist
 
-    extFile = '../Informes/Inform'+date+'.pdf'
+    extFile = '../Informes/Inform'+d+'.pdf'
     extFile = os.path.join(currentPath.c, extFile)
     manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
 
@@ -197,7 +195,7 @@ def Mail():
         #c, extFile =  currentFile()
         # c =currentFile()
         f = open(
-            os.path.join(currentPath.c, "../Informes/inform"+date+".pdf"), "rb"
+            os.path.join(currentPath.c, "../Informes/inform"+d+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
@@ -221,8 +219,8 @@ def Mail():
             manageLog('Process', text) # send mail in log
             #c, extFile =  currentFile()
             # c =currentFile()
-            source = os.path.join(currentPath.c, "../Informes/inform"+date+".pdf")
-            destination = os.path.join(currentPath.c, "../Informes/Procesados/inform"+date+".pdf")
+            source = os.path.join(currentPath.c, "../Informes/inform"+d+".pdf")
+            destination = os.path.join(currentPath.c, "../Informes/Procesados/inform"+d+".pdf")
             
             res = move(source, destination)
             

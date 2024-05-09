@@ -1,9 +1,9 @@
+from functions import fileDate
 
 # if not exist create, but if exist add to note
 def manageLog(text = 'Start Process...', mssg = ''):
     import os
     import currentPath
-    from functions import fileDate
 
     # c,extFile = currentFile()
 
