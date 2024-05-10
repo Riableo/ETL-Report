@@ -1,0 +1,7 @@
+File created at 10-05-2024 12:45:47
+-------------------
+[10-05-2024 12:45:47] Process beginning
+[10-05-2024 12:45:59] File or directory C:/temp/Datos/Información20240510.xlsx not found.
+-------------------
+[10-05-2024 12:46:19] Process beginning
+[10-05-2024 12:46:21] File or directory C:/temp/Datos/Información20240510.xlsx not found.

@@ -1,5 +1,7 @@
 # 📗 ETL Report 📮
 
+![MySQL](https://img.shields.io/badge/mysql-306AEE.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Python](https://img.shields.io/badge/python-3D678A?style=for-the-badge&logo=python&logoColor=ffdd54) [![Made withJupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+
 Script that find a Excel file with specific caracteristics, load data to MySQL DB and create an inform that after is sended via mail using [Resend](https://resend.com "Tool for send mails").
 
 ## Diagrams 📊
