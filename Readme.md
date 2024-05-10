@@ -1,8 +1,8 @@
-# ETL Report :bar_chart:
+# 📗 ETL Report 📮
 
 Script that find a Excel file with specific caracteristics, load data to MySQL DB and create an inform that after is sended via mail using [Resend](https://resend.com "Tool for send mails").
 
-## Diagrams
+## Diagrams 📊
 
 ### Bar chart first version
 
@@ -12,11 +12,11 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 
   ![Better than diagram of the first veersion](/assets/images/pie.png "Pie chart of Quantity")
 
-## Mail :mailbox:
+## Mail 📫
 
 ![Mail sended with project](/assets/images/mail.png "Mail body & attachment file") 
 
-## Tools & Libs
+## 🔧🔨 Tools & Libs 📚
 
 - [**Pymysql**](https://pypi.org/project/pymysql/ "Doc library"): To connect with MySQL.
 
@@ -28,7 +28,7 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 
 - [**Shutil**](https://docs.python.org/3/library/shutil.html "Doc with multi operations"): To move files between different DIR's, also it offers other methods that can help us with managament the operations with files.
 
-## Resources
+## Resources ♻️
 
 - [Log Control](https://programminghistorian.org/es/lecciones/trabajar-con-archivos-de-texto "Work with plain text"): It's helps me with sintax about work with plain text files.
 
@@ -38,7 +38,7 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 
 - [Concatenate path](https://www.geeksforgeeks.org/python-os-path-join-method/ "Use os to concatenate path"): Union of string chains to pass a path complete.
 
-- [Create DIR if not exist](https://www.geeksforgeeks.org/create-a-directory-in-python/ "How create a DIR"): I've used for create the DIR in case this doesn't exist with ```os.mkdir``` .
+- [Create DIR if not exist](https://www.geeksforgeeks.org/create-a-directory-in-python/ "How create a DIR"): I've used for create the DIR in case this doesn't exist with ```os.mkdir```.
 
 - [Create function with multi returns](https://drbeane.github.io/python/pages/functions/returning_multiple.html#:~:text=It%20is%20possible%20for%20a,return%20statement%2C%20separated%20by%20commas. "Multi returns function"): I've used this to test the origin path. In the final version I've deleted those returns because aren't neccesary.
 
@@ -48,7 +48,7 @@ Script that find a Excel file with specific caracteristics, load data to MySQL D
 
   >This implementation generated me multiples errors with the imports, in my opinion, you must be careful with the imports, it could convert easily in [circular import](<https://rollbar.com/blog/how-to-fix-circular-import-in-python/#:~:text=The%20phrase%20(most%20likely%20due,neither%20import%20can%20complete%20first.> "How fix circular import") error.
 
-## To improve Project
+## To improve Project 🎯
 
 - [**Plot material**](https://plotly.com/python/legend/ "Tool with interactivity"): An interesting tool for drawing charts with interactivity.
 
