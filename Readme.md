@@ -1,23 +1,32 @@
-# ETL Report
+# ETL Report :bar_chart:
 
 Script that find a Excel file with specific caracteristics, load data to MySQL DB and create an inform that after is sended via mail using [Resend](https://resend.com "Tool for send mails").
 
 ## Diagrams
 
-![Bar chart first version](/assets/images/grafica.png "Bar chart of Quantity")
-![Better than diagram of the first veersion](/assets/images/pie.png "Pie chart of Quantity")
+### Bar chart first version
 
-## Mail
+  ![Bar chart first version](/assets/images/grafica.png "Bar chart of Quantity")
 
-image of mail
+## Better than first diagram
+
+  ![Better than diagram of the first veersion](/assets/images/pie.png "Pie chart of Quantity")
+
+## Mail :mailbox:
+
+![Mail sended with project](/assets/images/mail.png "Mail body & attachment file") 
 
 ## Tools & Libs
 
-- [**Pymysql**](https://pypi.org/project/pymysql/ "Doc library"): For the connection with MySQL
-- [**Pandas**](urlPandas): 
-- [**Matplotlib**](urlMatplot):
-- [**Resend**](urlResend):
-- [**Shutil**](urlShutil):
+- [**Pymysql**](https://pypi.org/project/pymysql/ "Doc library"): To connect with MySQL.
+
+- [**Pandas**](https://pandas.pydata.org "Oficial page of Pandas"): Data analysis library, it's probably the lib most used for data analysis. 
+
+- [**Matplotlib**](https://matplotlib.org "Oficial page of Matplotlib"): To create plots.
+
+- [**Resend**](https://resend.com "Oficial page of Resend"): To send mails with multiples actions; it's a very interesting tool, also his documentation is understanding easily.
+
+- [**Shutil**](https://docs.python.org/3/library/shutil.html "Doc with multi operations"): To move files between different DIR's, also it offers other methods that can help us with managament the operations with files.
 
 ## Resources
 
@@ -42,3 +51,7 @@ image of mail
 ## To improve Project
 
 - [**Plot material**](https://plotly.com/python/legend/ "Tool with interactivity"): An interesting tool for drawing charts with interactivity.
+
+  ### Plotly graph
+
+  ![Graphic with interactivity](/assets/images/plotly.png "Graphic of plotly")
