@@ -1,3 +1,5 @@
+import currentPath
+
 def fileDate(t = ''):
     from datetime import datetime
 
@@ -18,7 +20,7 @@ def fileDate(t = ''):
 
         return fecha_actual.strftime("%Y%m%d")
 
-d = fileDate('date')
+date = fileDate('date')
 
 def process(file):
     import pandas as pd
@@ -59,9 +61,48 @@ def process(file):
 
         connection.close()
 
+# Checking whether the specified path exists
+def validateDIR (currentPath, path):
+    import os
+    from log import manageLog
+
+    # Specifying path
+    valPath = os.path.join(currentPath, path)
+    
+    isExisting = os.path.isdir(valPath)
+    
+    # If not exist DIR create
+    if isExisting:
+
+        # Mssg log
+        text = 'DIR ' +path+ ' exist'
+        manageLog('Process', text)
+
+        # Create subdir
+        if path == '../Informes':
+            validateDIR(currentPath,'../Informes/Procesados')
+
+    else:
+
+        # Mssg log don't exist
+        text = 'DIR ' +path+ ' not exist'
+        manageLog('Process', text)
+
+        # Create DIR
+        os.mkdir(valPath)
+
+        # Mssg log created
+        text = 'DIR ' +path+ ' created'
+        manageLog('Process', text)
+        
+        # Create subdir
+        if path == '../Informes':
+            validateDIR(currentPath,'../Informes/Procesados')
+
 def inform():
     # %%
     import pymysql
+    import os
     import sys
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -126,11 +167,25 @@ def inform():
 
     fig.set_size_inches(10, 10)
 
-    extFile = '../Informes/Inform'+d+'.pdf'
+    # c, extFile = currentFile()
+    
+    # c =currentFile()
 
-    with PdfPages(extFile) as pdf:
+    validateDIR(currentPath.c,'../Informes') # Validate DIR exist
+
+    extFile = '../Informes/Inform'+date+'.pdf'
+    pathInformFile = os.path.join(currentPath.c, extFile)
+    # manageLog('Process', 'Directory search: '+extFile)#  Delete validate DIR
+
+    with PdfPages(pathInformFile) as pdf:
         for x in figs:
-            pdf.savefig(x)
+            try:
+                pdf.savefig(x)
+            except FileNotFoundError as e:
+                print(e)
+                manageLog('Process','Error en save pdf file: '+pathInformFile)
+                manageLog('Process', e)
+                sys.exit(1)
     
     manageLog('Diagram', extFile) # Create diagram in log
 
@@ -144,20 +199,37 @@ def Mail():
     resend.api_key = os.environ["RESEND_API_KEY"]
 
     try:
+        #c, extFile =  currentFile()
+        # c =currentFile()
         f = open(
-            os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf"), "rb"
+            os.path.join(currentPath.c, "../Informes/inform"+date+".pdf"), "rb"
         ).read()
     except FileNotFoundError:
         print(f"File inform.pdf not found.")
         text = f"File inform.pdf not found."
-        manageLog('Not found', text) # File not found in log
+        manageLog('Process', text) # File not found in log
         sys.exit(1)
     else:
+
+        # Making a mail better
+
+        html = """
+        <div>
+            <p><strong>Successful Delivery of Daily Information!</strong></p>
+            <p>Dear Stakeholder,</p>
+            <p>We are pleased to inform you that the daily information report has been successfully processed and is ready for your review. You will find detailed reports and charts attached to this email.</p>
+            <p>If you have any questions or need further assistance, please feel free to reach out to us.</p>
+            <p>Thank you for your attention.</p>
+            <p>Best regards,</p>
+            <p>The Data Analysis Team</p>
+        </div>
+        """
+        
         params = {
             "from": "Testing <onboarding@resend.dev>",
             "to": ["riableo.dev@gmail.com"],
             "subject": "Daily inform",
-            "html": "<strong>it works!</strong>",
+            "html": html,
             "attachments": [{"filename": "inform.pdf", "content": list(f)}],
             
         }
@@ -167,14 +239,20 @@ def Mail():
         if email:        
             text = 'Mail have been sended.'
             manageLog('Process', text) # send mail in log
-            source = os.path.join(os.path.dirname(__file__), "../Informes/inform"+d+".pdf")
-            destination = os.path.join(os.path.dirname(__file__), "../Informes/Procesados/inform"+d+".pdf")
+            
+            # To construct move files
+            source = os.path.join(currentPath.c, "../Informes/inform"+date+".pdf")
+            destination = os.path.join(currentPath.c, "../Informes/Procesados/inform"+date+".pdf")
             
             res = move(source, destination)
             
+            # Protect path user
+            srcPath = "../Informes/inform"+date+".pdf"
+            destPath = "../Informes/Procesados/inform"+date+".pdf"
+
             # Change file path
-            moved = 'File have been moved from '+source+ ' -> ' + destination
-            error = "File haven't been moved to "+destination
+            moved = 'File have been moved from '+srcPath+ ' -> ' + destPath
+            error = "File haven't been moved to "+destPath
             manageLog('Process', moved) if res else manageLog('Process', error) # Move file in log 
             
             return res
