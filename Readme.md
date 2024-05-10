@@ -4,7 +4,7 @@
 
 # 📗 ETL Report 📮
 
-Script that find a Excel file with specific caracteristics, load data to MySQL DB and create an inform that after is sended via mail using [Resend](https://resend.com "Tool for send mails").
+Script that find a Excel file with specific caracteristics, load data to MySQL DB and create an inform that after is sent via mail using [Resend](https://resend.com "Tool for send mails").
 
 ## Diagrams 📊
 
